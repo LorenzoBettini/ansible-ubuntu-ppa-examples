@@ -5,5 +5,5 @@
     state: present
     pkg:
     - apt-transport-https
-    - python3-debian
-    - ca-certificates
+    - python3-debian # required for ansible deb822_repository module
+    - ca-certificates # required for verifying PPAs
