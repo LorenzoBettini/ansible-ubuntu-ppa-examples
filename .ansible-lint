@@ -1,0 +1,11 @@
+# This makes linter to fully ignore rules/tags listed below
+skip_list:
+  - unnamed-task
+  - deprecated-module  # Deprecated module.
+  - experimental  # all rules tagged as experimental
+  - fqcn[action-core]  # Use FQCN for builtin actions.
+  - name[play]
+  - name[casing]
+  - key-order[task]
+  - no-free-form
+  - fqcn[action]

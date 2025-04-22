@@ -1,0 +1,9 @@
+---
+- name: Install Main Packages
+  become: true
+  apt:
+    state: present
+    pkg:
+    - apt-transport-https
+    - python3-debian
+    - ca-certificates

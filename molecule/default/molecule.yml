@@ -1,0 +1,11 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance-ubuntu
+    image: ubuntu:24.04
+    pre_build_image: true
+provisioner:
+  name: ansible
