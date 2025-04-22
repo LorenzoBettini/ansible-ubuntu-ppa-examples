@@ -1,0 +1,18 @@
+---
+- name: Add Microsoft APT repository
+  ansible.builtin.deb822_repository:
+    name: vscode
+    types: [deb]
+    uris:
+      - "https://packages.microsoft.com/repos/vscode"
+    signed_by: "https://packages.microsoft.com/keys/microsoft.asc"
+    suites: [stable]
+    components: [main]
+    state: present
+    enabled: yes
+
+- name: Install Visual Studio Code
+  ansible.builtin.apt:
+    update_cache: true
+    name: code
+    state: present
