@@ -13,5 +13,6 @@
 
 - name: Install Google Chrome
   ansible.builtin.apt:
+    update_cache: true
     name: google-chrome-stable
     state: present
