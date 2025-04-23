@@ -17,3 +17,4 @@
     - include_tasks: tasks/recoll.yml
     - include_tasks: tasks/vscode.yml
     - include_tasks: tasks/google-chrome.yml
+    - include_tasks: tasks/dropbox.yml
