@@ -2,7 +2,7 @@
 - name: Check whether snap is installed and on system path 
   ansible.builtin.command: 'which snap' 
   register: snap_installed
-  ignore_errors: yes
+  ignore_errors: true
   changed_when: false
 
 - name: Remove Firefox and Thunderbird Snaps
