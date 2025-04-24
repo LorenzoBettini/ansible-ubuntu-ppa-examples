@@ -1,5 +1,6 @@
 ---
 - name: Add Microsoft APT repository
+  become: true
   ansible.builtin.deb822_repository:
     name: vscode
     types: [deb]
@@ -31,6 +32,7 @@
       -----END PGP PUBLIC KEY BLOCK-----
 
 - name: Install Visual Studio Code
+  become: true
   ansible.builtin.apt:
     update_cache: true
     name: code
