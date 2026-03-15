@@ -32,6 +32,9 @@
       =zPfd
       -----END PGP PUBLIC KEY BLOCK-----
 
+# To retrieve the latest key, you can run the following command:
+# curl -s --max-time 15 "https://packages.microsoft.com/keys/microsoft.asc"
+
 # Prevent the VSCode postinst script from overwriting vscode.sources.
 # The postinst always rewrites the file when it already exists, using its own
 # format (different field order, extra comment header, no Enabled/X-Repolib-Name
