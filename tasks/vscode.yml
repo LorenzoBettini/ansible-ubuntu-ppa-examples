@@ -1,10 +1,8 @@
 ---
 - name: Copy Microsoft apt key
   # The VSCode postinst writes the key as a binary GPG keyring to
-  # /usr/share/keyrings/microsoft.gpg and references it by that path in
-  # vscode.sources.  We must use the same path so that when the postinst
-  # rewrites vscode.sources on every install, the Signed-By field still
-  # matches what this task would write.
+  # /usr/share/keyrings/microsoft.gpg.  We use the same path in signed_by so
+  # that deb822_repository writes the correct path into vscode.sources.
   #
   # To update the key:
   # - download the latest code .deb package
@@ -30,6 +28,20 @@
     state: present
     enabled: yes
     signed_by: /usr/share/keyrings/microsoft.gpg
+
+# Prevent the VSCode postinst script from overwriting vscode.sources.
+# The postinst always rewrites the file when it already exists, using its own
+# format (different field order, extra comment header, no Enabled/X-Repolib-Name
+# fields). This would differ from what deb822_repository writes, causing the
+# idempotence run to report `changed`. By preseeding code/add-microsoft-repo=false,
+# the postinst skips the "write sources" logic entirely.
+- name: Preseed VSCode to not manage the APT repository
+  become: true
+  ansible.builtin.debconf:
+    name: code
+    question: code/add-microsoft-repo
+    value: 'false'
+    vtype: boolean
 
 - name: Install Visual Studio Code
   become: true
