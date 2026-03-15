@@ -5,7 +5,7 @@
     name: vscode
     types: [deb]
     uris:
-      - "https://packages.microsoft.com/repos/vscode"
+      - "https://packages.microsoft.com/repos/code"
     suites: [stable]
     components: [main]
     state: present
@@ -37,3 +37,12 @@
     update_cache: true
     name: code
     state: present
+
+# During the installation, Visual Studio Code creates the vscode.list file
+# which is redundant and generates the following warning during "apt update":
+# Target Packages (main/binary-amd64/Packages) is configured multiple times
+- name: Remove /etc/apt/sources.list.d/vscode.list
+  become: true
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/vscode.list
+    state: absent
