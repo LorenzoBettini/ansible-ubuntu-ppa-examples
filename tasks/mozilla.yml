@@ -48,10 +48,13 @@
     dest: "/etc/apt/preferences.d/mozillateamppa"
     mode: 0644
 
+- name: Update apt cache after adding Mozilla PPA
+  ansible.builtin.apt:
+    update_cache: true
+
 - name: Install Firefox and Thunderbird from APT
   become: true
   ansible.builtin.apt:
-    update_cache: true
     state: present
     pkg:
     - firefox
@@ -59,7 +62,7 @@
 
 - name: Copy Mozilla Unattended update preference
   become: true
-  copy:
+  ansible.builtin.copy:
     src: "files/51unattended-upgrades-mozilla.txt"
     dest: "/etc/apt/apt.conf.d/51unattended-upgrades-mozilla"
     mode: 0644
