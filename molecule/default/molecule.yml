@@ -5,16 +5,7 @@ driver:
   name: docker
 platforms:
   - name: instance-ubuntu
-    image: ubuntu:24.04
+    image: ubuntu:26.04
     pre_build_image: true
 provisioner:
   name: ansible
-scenario:
-  test_sequence:
-    - destroy
-    - syntax
-    - create
-    - prepare
-    - converge
-    - idempotence
-    - destroy
