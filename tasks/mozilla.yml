@@ -49,6 +49,7 @@
     mode: 0644
 
 - name: Update apt cache after adding Mozilla PPA
+  become: true
   ansible.builtin.apt:
     update_cache: true
 
