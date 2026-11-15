@@ -6,7 +6,7 @@
     types: [deb]
     uris:
       - "http://dl.google.com/linux/chrome/deb"
-    signed_by: "https://dl.google.com/linux/linux_signing_key.pub"
+    signed_by: "{{ lookup('ansible.builtin.file', 'google-chrome.pub') }}"
     suites: [stable]
     components: [main]
     state: present
